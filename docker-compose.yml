@@ -3,16 +3,16 @@ version: '3'
 services:
   fuseki:
     container_name: skosmos-fuseki
-    image: stain/jena-fuseki
+    image: stain/jena-fuseki:3.14.0
     environment:
-      - ADMIN_PASSWORD=admin
+      - ADMIN_PASSWORD=tempAdmin
       - JVM_ARGS=-Xmx2g
     ports:
      - 3030:3030
   # You can uncomment the line below to have a local volume bound onto the container, or
   # visit https://hub.docker.com/r/stain/jena-fuseki/ for other alternatives
-  # volumes:
-  #  - ${PWD}/fuseki:/fuseki
+    volumes:
+     - ./../fuseki:/fuseki
   skosmos:
     container_name: skosmos
     build: .
